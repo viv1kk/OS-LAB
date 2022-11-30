@@ -25,8 +25,8 @@ int main()
     }
     int pagefaults = 0;
     int pagehits = 0;
-    int isfull = 0;
-    int mru = 0;
+    int isfull = 0; // keeps track of how many pages are filled
+    int mru = 0;    // keeps track of the index of the MRU page
 
     for(int i = 0; i < n; i++)
     {

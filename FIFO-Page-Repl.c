@@ -22,7 +22,7 @@ int main()
     }
     int pagefaults = 0;
     int pagehits = 0;
-    int repind = 0;
+    int repind = 0; // keeps track of page (index) that will be swapped next if pagefault occurs
     for(int i = 0; i < n; i++)
     {
         int currentp = s[i];
