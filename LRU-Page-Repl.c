@@ -19,7 +19,7 @@ int main()
     for(int i = 0; i < np; i++)
     {
         p[i] = -1;
-        hist[i] = 1-i; // for making initial priority in filling the pages
+        hist[i] = 0-i; // for making initial priority in filling the pages
     }
     int pagefaults = 0;
     int pagehits = 0;

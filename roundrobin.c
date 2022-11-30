@@ -22,9 +22,9 @@ int main()
     printf("Enter the time slice : ");
     scanf("%d", &ts);
 
-    int qi = 0;          // queue index
-    int pind = -1;      // previous index keeps track of the processes those have gotten the cputime but still they are not finished yet so they need to be brought back into the ready queue at the last.
-    int flag = 0;       // whether all the processes are executed
+    int qi = 0;        // queue index
+    int pind = -1;     // previous index keeps track of the processes those have gotten the cputime but still they are not finished yet so they need to be brought back into the ready queue at the last.
+    int flag = 0;      // whether all the processes are executed
     int cputime = 0;   // keeps track of the current cputime(helps in calculating Completion time)
     int lasttime = -1; // keeps track of the previous cputime (i.e. before the most recent process was executed)
 
