@@ -1,34 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Process{
-    int PID;
-    int BT;
-    int AT;
-    int PR;
-}P;
-
 int main()
 {
     int n;
     printf("Enter the number of processes : ");
     scanf("%d", &n);
 
-    P p[n];
-
+    int BT[n], tempBT[n], AT[n], PR[n], CT[n], q[n];
     printf("Enter the AT, BT, PR : \n");
     for(int i = 0; i < n; i++)
     {
-        p[i].PID = i;
-        scanf("%d%d%d", &p[i].AT,&p[i].BT, &p[i].PR);
-    }
-
-    int BT[n], AT[n], PR[n], CT[n], q[n];
-    for(int i=0;i < n; i++)
-    {
-        BT[i] = p[i].BT;
-        AT[i] = p[i].AT;
-        PR[i] = p[i].PR;
+        scanf("%d%d%d", &AT[i],&BT[i], &PR[i]);
+        tempBT[i] = BT[i];
         CT[i] = 0;
         q[i] = -1;
     }
@@ -112,7 +96,7 @@ int main()
     for(int i = 0; i < n; i++)
     {
         TAT[i] = CT[i]-AT[i];
-        WT[i] = TAT[i]-p[i].BT;
+        WT[i] = TAT[i]-tempBT[i];
 
         totTAT += (float)TAT[i];
         totWT += (float)WT[i];
@@ -120,7 +104,7 @@ int main()
     printf("\nPID\tAT\tBT\tPR\tCT\tTAT\tWT\n");
     for(int i = 0; i < n; i++)
     {
-        printf("P%d\t%d\t%d\t%d\t%d\t%d\t%d\n", i,AT[i], p[i].BT, PR[i], CT[i], TAT[i], WT[i]);
+        printf("P%d\t%d\t%d\t%d\t%d\t%d\t%d\n", i,AT[i], tempBT[i], PR[i], CT[i], TAT[i], WT[i]);
     }
 
     printf("atata %f wt %f", totTAT, totWT);
