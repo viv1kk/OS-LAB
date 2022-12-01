@@ -12,7 +12,7 @@ int main()
         scanf("%d", &s[i]);
     }
 
-    printf("Enter the number of pages : ");
+    printf("Enter the number of frames : ");
     scanf("%d", &np);
     int p[np];
     int hist[np];
@@ -24,6 +24,14 @@ int main()
     int pagefaults = 0;
     int pagehits = 0;
 
+
+    printf("\tPage");
+    for(int i = 1; i <= np; i++)
+    {
+        printf("\tframe%d", i);
+    }
+
+
     for(int i = 0; i < n; i++)
     {
         int currpage = s[i];
@@ -33,7 +41,8 @@ int main()
             if(p[j] == currpage) // page hit
             {
                 pagehits++;
-                //reduce everyone's count except for p[i];
+                //reduce everyone's count except for p[j];
+                hist[j] = 0;
                 for(int k = 0; k < np; k++)
                 {
                     if(k == j) continue;
@@ -49,9 +58,7 @@ int main()
             //find the one that was least recently used;
             int mn = 0;
             for(int j = 0; j < np; j++)
-            {
                 if(hist[j] < hist[mn]) mn = j;
-            }
 
             p[mn] = currpage;
             hist[mn] = 0;
@@ -61,11 +68,15 @@ int main()
                 hist[k]--;
             }
         }
-        // for(int j = 0; j < np; j++)
-        // {
-        //     printf("(%d,%d), ", p[j], hist[i]);
-        // }
-        // printf("\n");
+
+        printf("\n\t%d", currpage);
+        for(int i = np-1; i >= 0; i--)
+        {
+            if(p[i] == -1)
+                printf("\t-");
+            else
+                printf("\t%d", p[i]);
+        }
     }
 
     printf("\nTotal Page faults : %d", pagefaults);
@@ -73,3 +84,7 @@ int main()
 
     return 0;
 }
+
+// 14
+// 7 0 1 3 0 2 1 3 5 1 0 1 0 5
+// 4

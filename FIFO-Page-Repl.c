@@ -12,7 +12,7 @@ int main()
         scanf("%d", &s[i]);
     }
 
-    printf("Enter the number of pages : ");
+    printf("Enter the number of frames pages : ");
     scanf("%d", &np);
     int p[np];
 
@@ -23,10 +23,17 @@ int main()
     int pagefaults = 0;
     int pagehits = 0;
     int repind = 0; // keeps track of page (index) that will be swapped next if pagefault occurs
+
+    printf("\tPage");
+    for(int i = 1; i <= np; i++)
+    {
+        printf("\tframe%d", i);
+    }
+
+
     for(int i = 0; i < n; i++)
     {
         int currentp = s[i];
-        
         //check if the page is available in the mem;
         int flag = 0;
         for(int j = 0; j < np; j++)
@@ -43,6 +50,18 @@ int main()
             p[repind] = currentp;
             pagefaults++;
             repind = (repind+1)%np;
+        }
+
+        printf("\n\t%d", currentp);
+        for(int i = 0; i < np; i++)
+        {
+            if(p[i] == -1)
+            {
+                printf("\t-");
+            }
+            else{
+                printf("\t%d", p[i]);
+            }
         }
     }
     printf("\nTotal Page faults : %d", pagefaults);
