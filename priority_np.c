@@ -10,7 +10,7 @@ int main()
     int BT[n];
     int PR[n];
 
-    printf("Enter the AT and Priority of each Process :\n");
+    printf("Enter the BT and Priority of each Process :\n");
     for(int i = 0; i<n; i++)
     {
         scanf("%d", &BT[i]);
@@ -67,13 +67,13 @@ int main()
 		printf("P%d\t%d\t%d\t%d\t%d\t%d\n", i, PR[i], BT[i], CT[i], TAT[i],WT[i]);
 	}
 
-	printf("Average TAT : %f\n", (sumTat/n));
-	printf("Average WT : %f\n", (sumWT/n));
+	printf("Average TAT : %.2f\n", (sumTat/n));
+	printf("Average WT : %.2f\n", (sumWT/n));
 
-    for(int j = 0; j < n; j++)
-    {
-        printf("%d, %d\n", PR[j], BT[j]);
-    }
+    // for(int j = 0; j < n; j++)
+    // {
+    //     printf("%d, %d\n", PR[j], BT[j]);
+    // }
 
     return 0;
 }

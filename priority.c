@@ -16,7 +16,7 @@ int main()
 
     P p[n];
 
-    printf("Enter the BT, AT, PR : \n");
+    printf("Enter the AT, BT, PR : \n");
     for(int i = 0; i < n; i++)
     {
         p[i].PID = i;
@@ -33,13 +33,13 @@ int main()
         q[i] = -1;
     }
 
-    int qi = 0;
-    int flag = 0;
-    int cputime = 0;
+    int qi = 0;      // queue index  points to the index where new incoming processes need to be stored
+    int flag = 0;    
+    int cputime = 0;   // keeps track of CPU time till all the processes are finished execution
 
-    while(flag == 0)
+    while(flag == 0)    // while all the processes are not finished
     {
-        if(qi < n)
+        if(qi < n)  // if all processes not arrived in ready queue
         {
             //find the process that just arrived;
             for(int i = 0; i < n; i++)
@@ -53,9 +53,9 @@ int main()
         }
 
         int ind = 0;
-        for(int i = 0; i < qi; i++)
+        for(int i = 0; i < qi; i++) // initializing  ind with a valid value
         {
-            if(q[i] != -1)
+            if(q[i] != -1) 
             {
                 ind = i;
                 break;
@@ -68,7 +68,6 @@ int main()
                 continue;
 
             //find the process who have highest priority and if processes have equal priority then choose thee process with the smallest burst time
-
             if(PR[q[i]] == PR[q[ind]] && BT[q[i]] < BT[q[ind]])
             {
                 ind = i;
@@ -79,25 +78,25 @@ int main()
             }
         }
 
-        if(qi < n)
+        if(qi < n) // single step execution because there maybe higher priority processes that can enter in the ready queue 
         {
             BT[q[ind]]--;
             cputime++;
 
             if(BT[q[ind]] == 0)
             {
-                CT[q[ind]] = cputime;
-                q[ind] = -1;
+                CT[q[ind]] = cputime; // storing the completition time of the process; 
+                q[ind] = -1;    // removing the process from teh queue
             }
         }
-        else
+        else // when all the processes are arrived then we can move to fully execute every process in one go because we alrady know the priority of each process
         {
             cputime+= BT[q[ind]];
             CT[q[ind]] = cputime;
             BT[q[ind]] = 0;
             q[ind] = -1;
 
-            // check whether all processes are executed
+            // check whether all processes are executed (here i checked ready queue but we can also check burst times)
             int i = 0;
             for(i = 0; i < n; i++)
             {
@@ -124,6 +123,7 @@ int main()
         printf("P%d\t%d\t%d\t%d\t%d\t%d\t%d\n", i,AT[i], p[i].BT, PR[i], CT[i], TAT[i], WT[i]);
     }
 
+    printf("atata %f wt %f", totTAT, totWT);
     printf("\nAverage TAT = %.2f\n", (totTAT/(float)n));
     printf("Average WT = %.2f\n", (totWT/(float)n));
 
