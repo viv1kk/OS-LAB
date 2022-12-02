@@ -24,13 +24,6 @@ int main()
     int pagehits = 0;
     int repind = 0; // keeps track of page (index) that will be swapped next if pagefault occurs
 
-    printf("\tPage");
-    for(int i = 1; i <= np; i++)
-    {
-        printf("\tframe%d", i);
-    }
-
-
     for(int i = 0; i < n; i++)
     {
         int currentp = s[i];
@@ -50,18 +43,6 @@ int main()
             p[repind] = currentp;
             pagefaults++;
             repind = (repind+1)%np;
-        }
-
-        printf("\n\t%d", currentp);
-        for(int i = 0; i < np; i++)
-        {
-            if(p[i] == -1)
-            {
-                printf("\t-");
-            }
-            else{
-                printf("\t%d", p[i]);
-            }
         }
     }
     printf("\nTotal Page faults : %d", pagefaults);

@@ -28,12 +28,6 @@ int main()
     int isfull = 0; // keeps track of how many pages are filled
     int mru = 0;    // keeps track of the index of the MRU page
 
-    printf("\tPage");
-    for(int i = 1; i <= np; i++)
-    {
-        printf("\tframe%d", i);
-    }
-
     for(int i = 0; i < n; i++)
     {
         int currpage = s[i];
@@ -64,18 +58,6 @@ int main()
             {
                 p[mru] = currpage;
                 pagefaults++;
-            }
-        }
-
-        printf("\n\t%d", currpage);
-        for(int i = 0; i < np; i++)
-        {
-            if(p[i] == -1)
-            {
-                printf("\t-");
-            }
-            else{
-                printf("\t%d", p[i]);
             }
         }
     }

@@ -19,18 +19,10 @@ int main()
     for(int i = 0; i < np; i++)
     {
         p[i] = -1;
-        hist[i] = 0-i; // for making initial priority in filling the pages
+        hist[i] = -i; // for making initial priority in filling the pages
     }
     int pagefaults = 0;
     int pagehits = 0;
-
-
-    printf("\tPage");
-    for(int i = 1; i <= np; i++)
-    {
-        printf("\tframe%d", i);
-    }
-
 
     for(int i = 0; i < n; i++)
     {
@@ -67,15 +59,6 @@ int main()
                 if(k == mn)continue;
                 hist[k]--;
             }
-        }
-
-        printf("\n\t%d", currpage);
-        for(int i = np-1; i >= 0; i--)
-        {
-            if(p[i] == -1)
-                printf("\t-");
-            else
-                printf("\t%d", p[i]);
         }
     }
 
