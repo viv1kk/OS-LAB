@@ -67,7 +67,7 @@ int main()
         }
     }
 
-    printf("\nSeek Time of the given I/O requests : %d, ", seektime);    
+    printf("\nSeek Time of the given I/O requests : %d, ", sum);    
     return 0;
 }
 

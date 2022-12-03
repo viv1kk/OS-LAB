@@ -46,7 +46,7 @@ int main()
     {
         sum += abs(q[i]-q[i+1]);
     }
-    printf("\nSeek Time of the given I/O requests : %d, ", seektime);
+    printf("\nSeek Time of the given I/O requests : %d, ", sum);
     return 0;
 }
 // 176 79 34 60 92 11 41 114

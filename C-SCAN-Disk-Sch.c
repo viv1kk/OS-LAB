@@ -50,6 +50,6 @@ int main()
         sum += abs(q[i]-q[i+1]);
     }
 
-    printf("\nSeek Time of the given I/O requests : %d, ", seektime);    return 0;
+    printf("\nSeek Time of the given I/O requests : %d, ", sum);    return 0;
 }
 // 95 180 34 119 11 123 62 64
