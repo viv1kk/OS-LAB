@@ -1,5 +1,10 @@
 #include <stdio.h>
+#include <limits.h>
 #include <stdlib.h>
+
+int cmpfunc (const void * a, const void * b) {
+   return ( *(int*)a - *(int*)b );
+}
 
 int main()
 {
@@ -19,12 +24,29 @@ int main()
     printf("Enter the initial head position : ");
     scanf("%d", &initHead);
 
-    int seektime = abs(initHead-q[0]);
+    qsort(q, n, sizeof(int), cmpfunc);
 
-    for(int i = 0; i < n-1; i++)
+    int ptr = 0;
+    for(int i = 0; i < n; i++)
     {
-        seektime += abs(q[i]-q[i+1]);
+        if(q[i] > initHead){ ptr = i; break;};
+    }
+    int sum = abs(q[ptr]-initHead);
+
+    for(int i = ptr; i < n-1; i++)
+    {
+        sum += abs(q[i]-q[i+1]);
+    }
+    if(ptr != 0)
+    {
+        sum += abs(q[n-1]-q[ptr-1]);
+    }
+
+    for(int i = ptr-1; i > 0 ; i--)
+    {
+        sum += abs(q[i-1]-q[i]);
     }
     printf("\nSeek Time of the given I/O requests : %d, ", seektime);
     return 0;
 }
+// 176 79 34 60 92 11 41 114
