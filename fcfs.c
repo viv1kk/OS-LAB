@@ -53,7 +53,7 @@ int main()
 	for(int i = 0; i < num; i++)
 	{
 		TAT[i] = completionT[i]-arrivalT[i];
-		sumTat = (float)TAT[i];
+		sumTat += (float)TAT[i];
 	}
 
 	int waitT[num];
