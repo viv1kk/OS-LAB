@@ -45,7 +45,7 @@ int main()
         }
     }
 
-    printf("THe init head = %d\n", q[ptr]);
+    printf("The init head = %d\n", q[ptr]);
     int lptr = ptr-1, rptr = ptr+1;
     int sum = abs(q[ptr]-initHead);
 

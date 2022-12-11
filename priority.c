@@ -79,12 +79,11 @@ int main()
             CT[q[ind]] = cputime;
             BT[q[ind]] = 0;
             q[ind] = -1;
-
             // check whether all processes are executed (here i checked ready queue but we can also check burst times)
             int i = 0;
-            for(i = 0; i < n; i++)
+            for(i = 0; i < n; i++) // check whether all the processes finished execution
             {
-                if(q[i] != -1)
+                if(BT[i]  > 0)
                     break;
             }
             if(i == n)

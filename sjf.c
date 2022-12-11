@@ -28,9 +28,8 @@ int main()
         q[i] = -1;
     }
 
-
     int flag = 0;
-    int ts = 0;
+    int ts = 0; // this keeps track of completion time or cpu time
     while(flag == 0)
     {
         if(qi < n) // Not all process are in queue
@@ -59,7 +58,7 @@ int main()
                         continue;
                     if (BT[q[i]] < min)
                     {
-                        min = BT[q[i]]; // reducing the bt,indicating process is being executed;
+                        min = BT[q[i]]; // reducing the bt, indicating process is being executed;
                         k = i;
                     }
                 }
