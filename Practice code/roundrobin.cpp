@@ -19,7 +19,7 @@ int main()
     cin>>timeslice;
     int done = 0;
     int cputime = 0;
-    queue<int>q;
+    queue<int>q; // ready queue
     vector<int>visited(n, 0);
     float tot_wt = 0.0f, tot_tat = 0.0f;
     int flagInd = -1; 
@@ -27,7 +27,7 @@ int main()
     {
         for(int i = 0; i < n; i++)
         {
-            if(AT[i] <= cputime && visited[i] == 0){ q.push(i); visited[i] = 1; }
+            if(AT[i] <= cputime && visited[i] == 0){ q.push(i); visited[i] = 1; } // process which are not yet visited and whose arrival time <= cputime
         }
         if(flagInd != -1) q.push(flagInd); // the previous unfinished process inserted in queue after all newly arrived processes are inserted
         if(q.empty()){cputime++; continue;}
@@ -36,13 +36,13 @@ int main()
         {
             cputime += timeslice;
             BT[currProcess] -= timeslice;
-            q.pop();
+            q.pop(); // remove from the front (but this process need to be put back after all the newly arrived process are inserted in the queue)
             flagInd = currProcess; // this process need to be put back in queue
         }
         else
         {
             cputime+=BT[currProcess];
-            flagInd = -1;
+            flagInd = -1; // the process is finished so no need to put it in the queue
             BT[currProcess] = 0;
             CT[currProcess] = cputime;
             TAT[currProcess] = CT[currProcess]-AT[currProcess];
@@ -51,7 +51,8 @@ int main()
             tot_tat += (float)TAT[currProcess];
             q.pop();
         }
-        done = 1;
+        // Check if all the processes are finsished 
+        done = 1; 
         for(int i = 0; i < n; i++)
         {
             if(BT[i] != 0)
