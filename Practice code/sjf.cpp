@@ -22,7 +22,7 @@ int main()
         int mn = 0;
         for(int i = 0; i < n; i++)
         {   if(BT[mn] == 0){ mn++; mn %= n; }
-            if(AT[i] <= cputime && BT[i] < BT[mn] && BT[i] > 0 && BT[i] > 0)
+            if(AT[i] <= cputime && BT[i] < BT[mn] && BT[i] > 0 && BT[mn] > 0)
                 mn = i;
         }
         BT[mn]--;
